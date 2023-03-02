@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <script>
+        let w = window.innerWidth
+        let h = window.innerHeight
+        var player = new player()
+        let mapimg
+        var mmap = new mmap()
+        function preload() {
+            mapimg = loadImage('map.jpg')
+        }
+        function setup() {
+            createCanvas(w,h)
+
+        }
+        function draw() {
+            clear()
+            mmap.show()
+            player.show()
+            player.moving()
+        }
+        
+        
+    </script>
+</body>
+</html>

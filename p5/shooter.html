@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <script>
+        var bulletsFired = []
+        let w = window.innerWidth
+        let h = window.innerHeight
+        var shooterx = w/2
+        var shootery = h/2
+        var player = new shooterp()
+
+        function preload() {
+
+        }
+        function setup() {
+            createCanvas(w,h)
+
+        }
+        function draw() {
+            clear()
+            player.show()
+            player.moving()
+
+            for (var i = 0; i < bulletsFired.length; i++){
+		        bulletsFired[i].show();
+		        bulletsFired[i].update();
+            }
+	    }
+        
+        function mousePressed(){
+	        let mouseVector = getMouseVector();
+	        oneBullet = new bullet(mouseVector.x, mouseVector.y);
+            bulletsFired.push(oneBullet);
+
+
+        }
+        
+        
+    </script>
+</body>
+</html>
