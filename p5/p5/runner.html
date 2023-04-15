@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    
+</head>
+<body>
+    <script>
+        let w = window.innerWidth
+        let h = window.innerHeight
+        let right 
+        var jump = false
+        let player = new runnerp()
+        let mapimg
+        let map = new runnermap()
+        let houseimg
+        let house2img
+        let fireimg
+        let hit
+        //obstacles
+        let f1 = new house1(w/.9,player.y-player.height)
+        //fire
+        let fire1 = new fire(f1.x+f1.width,f1.y+player.height)
+        let fire2 = new fire(w/1.2,fire1.y)
+        let fire3 = new fire(fire1.x+fire1.width*4,fire1.y)
+        let f12 = new house1(fire3.x+fire3.height,f1.y)
+        let f2 = new house2(f12.x+f12.width*1.5,f12.y-f12.height/2)
+        let fires = [fire1,fire2,fire3]
+        let houses = [f1,f12,f2]
+        function preload() {
+            right = loadImage('right.png')
+            mapimg = loadImage('runner background.jpg')
+            houseimg = loadImage('house1.png')
+            house2img = loadImage('house2.png')
+            fireimg = loadImage('fire.png')
+        }
+        function setup() {
+            createCanvas(w,h)
+
+        }
+        function draw() {
+            clear()
+            map.show()
+            map.update()
+            player.show()
+            player.update()
+            //collisions
+            console.log(hit)
+            for(var i = 0; i < houses.length; i++) {
+                houses[i].show()
+                //right side
+                hit = collideRectRect(player.x+player.width,player.y-player.height/2,15,player.height,houses[i].x,houses[i].y,houses[i].width,houses[i].height)
+                if (hit) {
+                    player.x -= player.width*0.05
+                }
+                //top
+                hit = collideRectRect(player.x,player.y+player.height-15,player.width,15,houses[i].x+10,houses[i].y,houses[i].width-10,houses[i].height)
+                if (hit ) {
+                    player.y = houses[i].y-player.height
+                    player.velocity = 0  
+                    jump = true
+                }
+            }
+            for(var i = 0; i < fires.length; i++) {
+                fires[i].show()
+                hit = collideRectRect(player.x,player.y,player.width,player.height,fires[i].x,fires[i].y,fires[i].width,fires[i].height)
+                if(hit) {
+                    location.href = 'GAMEOVER.html'
+                }
+            }
+            
+        }
+        function keyPressed() {
+            if (key == ' ' && jump) {
+                player.jump()
+                jump = false
+            }
+        }
+	    
+        
+        
+        
+        
+    </script>
+</body>
+</html>
