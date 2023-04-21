@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    
+</head>
+<body>
+    <div id="black2"></div>
+    <script>
+        let w = window.innerWidth
+        let h = window.innerHeight
+        let right 
+        var jump = false
+        let player = new runnerp()
+        let mapimg
+        let map = new runnermap()
+        let houseimg
+        let house2img
+        let fireimg
+        let hit
+        let bigdemonimg
+        let demon = new bigdemon()
+        let tutorialimg
+        //obstacles
+        let f1 = new house1(w/.9,player.y-player.height)
+        //fire
+        let fire1 = new fire(f1.x+f1.width,f1.y+player.height)
+        let fire2 = new fire(w/1.2,fire1.y)
+        let spacetojump = new tutorial()
+        let fire3 = new fire(fire1.x+fire1.width*4,fire1.y)
+        let f12 = new house1(fire3.x+fire3.height,f1.y)
+        let f2 = new house2(f12.x+f12.width*1.5,f12.y-f12.height/2)
+        let f22 = new house2(f2.x+f2.width*1.5,f12.y-f12.height/2)
+        let fire4 = new fire(f22.x+fire1.width*2,f22.y-fire1.height)
+        let f13 = new house1(f22.x+f22.width*2.5,f1.y)
+        let fire5 = new fire(f13.x-fire1.width,fire1.y)
+        let fire6 = new fire(f13.x+f12.width,fire1.y )
+        let fire7 = new fire(f13.x+f12.width*2,fire1.y )
+        let f14 = new house1(fire7.x+fire7.width,f1.y)
+        let f23 = new house2(f14.x+f14.width,f2.y)
+        let f15 = new house1(f23.x+f23.width*2,f1.y)
+        let fire8 = new fire(f15.x+f15.width,fire1.y)
+        let f16 = new house1(fire8.x+fire8.width,f1.y)
+        let fire9 = new fire(f16.x+f16.width,fire8.y)
+        let fire10 = new fire(fire9.x+fire9.width,fire9.y)
+        let fire11 = new fire(f15.x-fire1.width,fire1.y)
+        let fire12 = new fire(f14.x+f14.width-fire1.width,f14.y-fire1.height)
+        let fires = [fire1,fire2,fire3,fire4,fire5,fire6,fire7,fire8,fire9,fire10,fire11,fire12]
+        let houses = [f1,f12,f2,f22,f13,f14,f23,f15,f16]
+        function preload() {
+            right = loadImage('right.png')
+            mapimg = loadImage('runner background.jpg')
+            houseimg = loadImage('house1.png')
+            house2img = loadImage('house2.png')
+            fireimg = loadImage('fire.png')
+            bigdemonimg = loadImage('bigdemon.png')
+            tutorialimg = loadImage('spacetojump.png')
+        }
+        function setup() {
+            createCanvas(w,h)
+
+        }
+        function draw() {
+            clear()
+            map.show()
+            map.update()
+            spacetojump.show()
+            player.show()
+            player.update()
+            //collisions
+            for(var i = 0; i < houses.length; i++) {
+                houses[i].show()
+                //right side
+                hit = collideRectRect(player.x+player.width,player.y-player.height/2,15,player.height,houses[i].x,houses[i].y,houses[i].width,houses[i].height)
+                if (hit) {
+                    player.x -= player.width*0.05
+                }
+                //top
+                hit = collideRectRect(player.x,player.y+player.height,player.width,15,houses[i].x+10,houses[i].y,houses[i].width-10,houses[i].height)
+                if (hit) {
+                    player.y = houses[i].y-player.height*1.05
+                    player.velocity = 0  
+                    jump = true
+                }
+            }
+            for(var i = 0; i < fires.length; i++) {
+                fires[i].show()
+                hit = collideRectRect(player.x,player.y,player.width,player.height,fires[i].x,fires[i].y,fires[i].width,fires[i].height)
+                if(hit) {
+                    //location.href = 'GAMEOVER.html'
+                }
+            }
+            demon.show()
+            hit = collideRectRect(demon.x,demon.y,demon.width,demon.height,player.x,player.y,player.width,player.height)
+            if (hit) {
+                //location.href = 'GAMEOVER.html'
+            }
+        }
+        function keyPressed() {
+            if (key == ' ' && jump == true) {
+                player.jump()
+                jump = false
+
+            }
+        }
+	    
+        
+        
+        
+        
+    </script>
+</body>
+</html>

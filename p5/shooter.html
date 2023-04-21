@@ -4,18 +4,30 @@
     <script src="p5.js"></script>
     <script src="Objects.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
     
 </head>
 <body>
     <script>
-        var bulletsFired = []
+        var bullets = []
         let w = window.innerWidth
         let h = window.innerHeight
         var shooterx = w/2
         var shootery = h/2
         var player = new shooterp()
+        var smap = new smap()
+        let mapimg
+        let demon
+        var enemies = []
+        var hit = false
+
 
         function preload() {
+            idle = loadImage('idle.png')
+            left = loadImage('left.png')
+            right = loadImage('right.png')
+            mapimg = loadImage('shooter background.jpg')
+            demon = loadImage('demon.png')
 
         }
         function setup() {
@@ -24,19 +36,38 @@
         }
         function draw() {
             clear()
-            player.show()
+            smap.show(mapimg)
             player.moving()
-
-            for (var i = 0; i < bulletsFired.length; i++){
-		        bulletsFired[i].show();
-		        bulletsFired[i].update();
+            //making bullets move
+            for (var i = 0; i < bullets.length; i++){
+		        bullets[i].show()
+		        bullets[i].update()
+                //checking for bullet collision with enemy
+                bullets[i].detect()
+                }
+            
+            //spawn enemy
+            if (round(random(90)) == 1) {
+                enemy = new coloenemy()
+                enemies.push(enemy)
             }
-	    }
+            //making enemies move
+            for (var i = 0; i < enemies.length; i++) {
+                enemies[i].update(enemies[i].getDir().x,enemies[i].getDir().y)
+                enemies[i].show(demon)
+                //check player collision with enemy 
+                hit = collideRectRect(shooterx-(player.width)/2,shootery-(player.height)/2,player.width,player.height,enemies[i].x,enemies[i].y,enemies[i].width,enemies[i].width)
+                if (hit == true) {
+                    location.href = "GAMEOVER.html"
+                }
+            }
+        }
+	    
         
         function mousePressed(){
 	        let mouseVector = getMouseVector();
 	        oneBullet = new bullet(mouseVector.x, mouseVector.y);
-            bulletsFired.push(oneBullet);
+            bullets.push(oneBullet);
 
 
         }
