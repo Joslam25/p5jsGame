@@ -1,4 +1,7 @@
 function woopee() {
+    if (localStorage.getItem("keycount") === null) {
+        localStorage.setItem("keycount",0) 
+    }
     if (localStorage.getItem("mapX") === null) {
         localStorage.setItem("mapX",w*1.5) 
     }
@@ -35,7 +38,19 @@ function woopee() {
     else {
         colobutton.y = parseInt(localStorage.getItem("colobuttY"))
     }
-    
+    if (localStorage.getItem("towerbuttX") === null) {
+        localStorage.setItem("towerbuttX",w*0.35*1.5)
+    }
+    else {
+        towerbutton.x = parseInt(localStorage.getItem("towerbuttX"))
+    }
+    if (localStorage.getItem("towerbuttY") === null) {
+        localStorage.setItem("towerbuttY",h*0.30*3)
+    }
+    else {
+        towerbutton.y = parseInt(localStorage.getItem("towerbuttY"))
+    }
+    document.getElementById('keys').innerHTML = 'Keys: '+ localStorage.getItem("keycount")
 }
 function setpos() {
     localStorage.setItem("mapX",mmap.x) 
@@ -44,6 +59,8 @@ function setpos() {
     localStorage.setItem("playerY",player.y)
     localStorage.setItem("colobuttX",colobutton.x)
     localStorage.setItem("colobuttY",colobutton.y)
+    localStorage.setItem("towerbuttX",towerbutton.x)
+    localStorage.setItem("towerbuttY",towerbutton.y)
 }
 function pplayer() {
     this.width = w*0.05
@@ -74,6 +91,7 @@ function pplayer() {
             else {
                 mmap.x -= 5
                 colobutton.x -= 5
+                towerbutton.x -= 5
             }
     }
     setpos()
@@ -95,6 +113,7 @@ function pplayer() {
             else {
                 mmap.x += 5
                 colobutton.x += 5
+                towerbutton.x += 5
             }
         }
         setpos()
@@ -118,6 +137,7 @@ function pplayer() {
         else {
             mmap.y += 5
             colobutton.y += 5
+            towerbutton.y += 5
         }
 }  
 setpos()
@@ -138,6 +158,7 @@ setpos()
         else {
             mmap.y -= 5
             colobutton.y -= 5
+            towerbutton.y -= 5
         }
 }
 setpos()
@@ -320,7 +341,8 @@ function bullet(xSpd,ySpd) {
             hit = collideRectCircle(enemies[i].x,enemies[i].y,enemies[i].width,enemies[i].height,this.x,this.y,this.r) 
             if (hit == true) {
                 enemies.splice(i,1)
-                bullets.splice(i,1)
+                score += 1
+                document.getElementById('score1').innerHTML = 'Demons Killed: ' + score
             }
 
             
@@ -343,11 +365,21 @@ function colobutton() {
     this.width = w/6
     this.height = h/6
     this.show = function() {
+        if (localStorage.getItem('shooter1') == 'true') {
+
+        }
+        else {
         imageMode(CORNER)
         image(butt,this.x,this.y,this.width,this.height)
+        }
     }
     this.redirect = function() {
+        if (localStorage.getItem('shooter1') == 'true') {
+
+        }
+        else {
         location.href = "shooter.html"
+        }
     }
 }
 function coloenemy() {
@@ -382,9 +414,9 @@ function coloenemy() {
 
 	    return Direction;
     }
-    this.update = function(xSpd,ySpd) {
-        this.x += xSpd*5;
-		this.y += ySpd*5;
+    this.update = function(xSpd,ySpd,multi) {
+        this.x += xSpd*multi;
+		this.y += ySpd*multi;
 
     }
     this.show = function(img) {
@@ -442,6 +474,7 @@ function runnermap() {
         }
         demon.update(demon.getDir().x,demon.getDir().y)
         spacetojump.x -= player.width*0.05
+        bow.x -= player.width*0.05
         }
     }
 }
@@ -517,4 +550,61 @@ function timer1() {
 }
 function animationredir() {
     location.href = "runner.html"
+}
+function runnerbow(inputx,inputy) {
+    this.width = player.width
+    this.height = player.height
+    this.x = inputx
+    this.y = inputy
+    this.show = function() {
+        image(bowimg,this.x,this.y,this.width,this.height)
+    }
+}
+function timer2 () {
+    location.href = 'fourthscene.html'
+}
+function obtained1() {
+    this.width= w/1.1
+    this.height = h/5
+    this.x = w/25
+    this.y = h
+    this.show = function() {
+        image(keyobtained,this.x,this.y,this.width,this.height)
+    }
+
+}
+function timer3 () {
+    localStorage.setItem("keycount",parseInt(localStorage.getItem("keycount"))+1)
+    localStorage.setItem("shooter1",true)
+    location.href = 'Main.html'
+
+}
+function towerbutton() {
+    this.x = localStorage.getItem("towerbuttX")
+    this.y = localStorage.getItem("towerbuttY")
+    this.width = w/6
+    this.height = h/6
+    this.show = function() {
+        if (localStorage.getItem('shooter2') == 'true') {
+
+        }
+        else {
+        imageMode(CORNER)
+        image(butt,this.x,this.y,this.width,this.height)
+        }
+    }
+    this.redirect = function() {
+        if (localStorage.getItem('shooter2') == 'true') {
+
+        }
+        else {
+        location.href = "shooter2.html"
+        }
+    }
+}
+function timer4 () {
+    localStorage.setItem("keycount",parseInt(localStorage.getItem("keycount"))+1)
+    localStorage.setItem("shooter2",true)
+    location.href = 'Main.html'
+
 }

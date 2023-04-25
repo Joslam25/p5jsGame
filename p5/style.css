@@ -197,7 +197,6 @@ body {
     animation-fill-mode: forwards;
     z-index: 2
 }
-
 @keyframes kidnap {
     10% {
         transform: translate(20vw,0)
@@ -210,7 +209,6 @@ body {
     }
 
 }
-
 #text3 {
     width: 10vw;
     position: absolute;
@@ -269,7 +267,7 @@ body {
     animation-fill-mode: forwards;
     background-color: black;
     animation-delay: 0s;
-    z-index: 4;
+    z-index: 5;
 }
 @keyframes fade-in2 {
     100% {
@@ -417,4 +415,417 @@ body {
     100% {
         opacity: 0.8
     }
+}
+#mc3 {
+    width : 5vw;
+    position: absolute;
+    top: 67vh;
+    left: -5vw;
+    z-index: 2;
+    animation-name: mc3;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+}
+@keyframes mc3 {
+    100% {
+        transform: translate(105vw,0)
+    }
+}
+#bow {
+    width : 5vw;
+    position: absolute;
+    top: 67vh;
+    left: 50vw;
+    z-index: 2;
+    animation-name: mc3;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-delay: 4.5s;
+}
+#mc4 {
+    width : 5vw;
+    position: absolute;
+    top: 67vh;
+    left: 100vw;
+    z-index: 2;
+    animation-name: mc4;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-delay: 10s;
+}
+@keyframes mc4 {
+    30% {
+        transform: translate(-50vw,0)
+    }
+    70% {
+        transform: translate(-50vw,0)
+    }
+    100% {
+        transform: translate(0,0);
+    }
+}
+#bigdemon {
+    width:20vw;
+    position: absolute;
+    top: 50vh;
+    left: -20vw;
+    animation-name: bigdemon;
+    animation-delay: 5s;
+    animation-duration: 10s;
+}
+@keyframes bigdemon {
+    50% {
+        transform: translate(50vw);
+    }
+    100% {
+        transform: translate(-10vw,0);
+    }
+}
+.dot {
+    width: 2vw;
+    height: 4vh;
+    position: absolute;
+    top: 70vh;
+    left: 100vw;
+    background-color: red;
+    border-radius: 10vw;
+}
+#dot1 {
+    animation-timing-function: linear;
+    animation-name: dot1;
+    animation-duration: 5s;
+    animation-delay: 9s;
+}
+#dot2 {
+    animation-timing-function: linear;
+    animation-name: dot2;
+    animation-duration: 5s;
+    animation-delay: 9.5s;
+}
+#dot3 {
+    animation-timing-function: linear;
+    animation-name: dot3;
+    animation-duration: 5s;
+    animation-delay: 10s;
+}
+@keyframes dot1 {
+    100% {
+        transform: translate(-102vw);
+    }
+}
+@keyframes dot2 {
+    100% {
+        transform: translate(-102vw,-8vh);
+    }
+}
+@keyframes dot3 {
+    100% {
+        transform: translate(-102vw,-16vh);
+    }
+}
+#ahh {
+    width: 10vw;
+    position: absolute;
+    left: 43vw;
+    top: 50vh;
+    animation-name: ahh;
+    animation-delay: 10s;
+    animation-duration: 5s;
+    opacity: 0;
+}
+@keyframes ahh {
+    1% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-60vw,0);
+    }
+}
+#text10 {
+    width: 10vw;
+    position: absolute;
+    top: 57vh;
+    left: 40vw;
+    opacity: 0;
+    animation-name: text10;
+    animation-duration: 10s;
+    animation-delay: 17s;
+    animation-timing-function: linear;
+}
+@keyframes text10 {
+    1% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(160vw,0);
+        opacity: 1;
+    }
+}
+#mc5 {
+    z-index:1;
+    width: 5vw;
+    position: absolute;
+    top: 45vh;
+    left: 15vw;
+    animation-name: move1;
+    animation-duration: 4s;
+    animation-delay: 35s;
+    animation-fill-mode: forwards;
+}
+#black4 {
+    width:100vw;
+    height: 100vh;
+    position:absolute;
+    top:0vh;
+    left:0vw;
+    animation-name: fade-in4;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    background-color: black;
+    animation-delay: 20s;
+    z-index: 4;
+    opacity: 0;
+}
+@keyframes fade-in4 {
+    100% {
+        opacity: 1
+    }
+}
+#instructions {
+    width: 101vw;
+    height: 30vh;
+    background-color: black;
+    position: absolute;
+    left: -1vw;
+    top: 70vh;
+    opacity: .75;
+    border-color: white;
+    border-style: solid;
+    border-top-width: 1vh;
+    z-index: 4;
+}
+.typed {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    z-index: 4;
+    position: absolute;
+    top: 77vh;
+    left: 3vw;
+    font-size: 2vw;
+    color:floralwhite;
+}
+#type1 {
+    animation: typing;
+    animation-duration: 10s;
+    animation-timing-function: steps(100, end);
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
+}
+#type2 {
+    animation: typing;
+    animation-duration: 10s;
+    animation-timing-function: steps(100, end);
+    animation-fill-mode: forwards;
+    animation-delay: 15s;
+}
+#type3 {
+    animation: typing;
+    animation-duration: 10s;
+    animation-timing-function: steps(100, end);
+    animation-fill-mode: forwards;
+    animation-delay: 25s;
+}
+#type4 {
+    animation: typing;
+    animation-duration: 10s;
+    animation-timing-function: steps(100, end);
+    animation-fill-mode: forwards;
+    animation-delay: 35s;
+}
+#type5 {
+    animation: typing;
+    animation-duration: 10s;
+    animation-timing-function: steps(100, end);
+    animation-fill-mode: forwards;
+    animation-delay: 45s;
+}
+@keyframes typing {
+    from { width: 0; opacity: 1}
+    99% {
+        width: 100%; opacity: 1;
+    }
+    to { width: 100%; opacity: 0}
+}
+#X {
+    width: 10vw;
+    height: 20vh;
+    position: absolute;
+    top: 30vh;
+    left: 40vw;
+    animation-name: X;
+    animation-duration: 5s;
+    animation-delay: 30s;
+    animation-timing-function: linear;
+    opacity: 0;
+}
+@keyframes X {
+    1% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+#map {
+    width: 300vw;
+    height: 300vh;
+    position: absolute;
+    top: -75vh;
+    left: 0;
+    z-index:0;
+    animation-name: move1;
+    animation-duration: 4s;
+    animation-delay: 35s;
+    animation-fill-mode: forwards;
+}
+@keyframes move1 {
+    99% {
+        transform: translate(-20vw,-65vh);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-20vw,-65vh);
+        opacity: 0;
+    }
+}
+#X2 {
+    width: 10vw;
+    height: 20vh;
+    position: absolute;
+    top: 30vh;
+    left: 40vw;
+    animation-name: X;
+    animation-duration: 3s;
+    animation-delay: 40s;
+    animation-timing-function: linear;
+    opacity: 0;
+    z-index:4;
+}
+#map2 {
+    width: 300vw;
+    height: 300vh;
+    position: absolute;
+    top: -140vh;
+    left: -20vw;
+    z-index:0;
+    animation-name: move2;
+    animation-duration: 12s;
+    animation-delay: 38.9s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+@keyframes move2 {
+    0.1% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+        transform: translate(0,0)
+    }
+    100% {
+        transform: translate(-60vw,0);
+        opacity: 1;
+    }
+}
+#X3 {
+    width: 10vw;
+    height: 20vh;
+    position: absolute;
+    top: 30vh;
+    left: 45vw;
+    animation-name: X;
+    animation-duration: 3.5s;
+    animation-delay: 51s;
+    animation-timing-function: linear;
+    opacity: 0;
+    z-index:4;
+}
+#type6 {
+    animation: typing;
+    animation-duration: 10s;
+    animation-timing-function: steps(100, end);
+    animation-fill-mode: forwards;
+    animation-delay: 55s;
+}
+#map3 {
+    width: 300vw;
+    height: 300vh;
+    position: absolute;
+    top: -140vh;
+    left: -80vw;
+    z-index:0;
+    animation-name: move3;
+    animation-duration: 12s;
+    animation-delay: 50.8s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+@keyframes move3 {
+    0.1% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+        transform: translate(0,0)
+    }
+    100% {
+        transform: translate(20vw,110vh);
+        opacity: 1;
+    }
+}
+#X4 {
+    width: 10vw;
+    height: 20vh;
+    position: absolute;
+    top: 30vh;
+    left: 40vw;
+    animation-name: X;
+    animation-duration: 3.5s;
+    animation-delay: 62s;
+    animation-timing-function: linear;
+    opacity: 0;
+    z-index:5;
+}
+#black5 {
+    width:100vw;
+    height: 100vh;
+    position:absolute;
+    top:0vh;
+    left:0vw;
+    animation-name: fade-in4;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    background-color: black;
+    animation-delay: 65s;
+    z-index: 7;
+    opacity: 0;
+}
+@keyframes fade-in4 {
+    100% {
+        opacity: 1
+    }
+}
+#score1 {
+    position: absolute;
+
+}
+#keys {
+    position: absolute;
+    
 }

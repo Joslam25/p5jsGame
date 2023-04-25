@@ -8,6 +8,8 @@
     
 </head>
 <body>
+    <h1 id="keys">Keys: </h1>
+    <div id="black2"></div>
     <script>
         let w = window.innerWidth
         let h = window.innerHeight
@@ -19,7 +21,8 @@
         let right
         let butt
         var colobutton = new colobutton()
-        let buttarr = [colobutton]
+        var towerbutton = new towerbutton()
+        let buttarr = [colobutton,towerbutton]
         var hit = false
 
 
@@ -49,8 +52,8 @@
             
             //checks for player movement
             player.moving()
-            console.log(player.x,player.y)
-
+            console.log(colobutton.x,colobutton.y)
+            console.log(towerbutton.x,towerbutton.y)
             for (let i = 0; i < buttarr.length; i++) {
                 hit = collideRectRect(buttarr[i].x,buttarr[i].y,buttarr[i].width,buttarr[i].height,player.x-player.width/2,player.y-player.height/2,player.width,player.height)
                 if (hit == true) {
@@ -60,7 +63,6 @@
                     buttarr[i].redirect()
              }
             }
-            
         }
         
         

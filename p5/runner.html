@@ -50,6 +50,7 @@
         let fire12 = new fire(f14.x+f14.width-fire1.width,f14.y-fire1.height)
         let fires = [fire1,fire2,fire3,fire4,fire5,fire6,fire7,fire8,fire9,fire10,fire11,fire12]
         let houses = [f1,f12,f2,f22,f13,f14,f23,f15,f16]
+        let bow = new runnerbow(fire11.x+f12.width*7,h-player.height-player.height*1.2)
         function preload() {
             right = loadImage('right.png')
             mapimg = loadImage('runner background.jpg')
@@ -58,6 +59,7 @@
             fireimg = loadImage('fire.png')
             bigdemonimg = loadImage('bigdemon.png')
             tutorialimg = loadImage('spacetojump.png')
+            bowimg = loadImage('bow.png')
         }
         function setup() {
             createCanvas(w,h)
@@ -97,6 +99,10 @@
             hit = collideRectRect(demon.x,demon.y,demon.width,demon.height,player.x,player.y,player.width,player.height)
             if (hit) {
                 //location.href = 'GAMEOVER.html'
+            }
+            bow.show()
+            if (map.x+map.width <= w) {
+                location.href = 'thirdscene.html'
             }
         }
         function keyPressed() {
