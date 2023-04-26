@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
+    
+</head>
+<body>
+    <h1 id="score1">Demons killed: 0</h1>
+    <script>
+        var bullets = []
+        let w = window.innerWidth
+        let h = window.innerHeight
+        var shooterx = w/2
+        var shootery = h/2
+        var player = new shooterp()
+        var smap = new smap()
+        let mapimg
+        let demon
+        var enemies = []
+        var hit = false
+        var score = 0
+        let keyobtained
+        let obtained = new obtained1()
+        function preload() {
+            idle = loadImage('idle.png')
+            left = loadImage('left.png')
+            right = loadImage('right.png')
+            mapimg = loadImage('shooter3 background.jpg')
+            demon = loadImage('demon.png')
+            keyobtained = loadImage('keyobtained.png')
+            bowsound = loadSound('bow.wav')
+        }
+        function setup() {
+            createCanvas(w,h)
+
+        }
+        function draw() {
+            clear()
+            smap.show(mapimg)
+            player.moving()
+            //making bullets move
+            for (var i = 0; i < bullets.length; i++){
+		        bullets[i].show()
+		        bullets[i].update()
+                //checking for bullet collision with enemy
+                bullets[i].detect()
+                }
+            
+
+            if (round(random(60)) == 1 && score < 50) {
+                enemy = new coloenemy()
+                enemies.push(enemy)
+            }
+
+            for (var i = 0; i < enemies.length; i++) {
+                enemies[i].update(enemies[i].getDir().x,enemies[i].getDir().y,10)
+                enemies[i].show(demon)
+                //check player collision with enemy 
+                hit = collideRectRect(shooterx-(player.width)/2,shootery-(player.height)/2,player.width,player.height,enemies[i].x,enemies[i].y,enemies[i].width,enemies[i].width)
+                if (hit == true) {
+                    location.href = "GAMEOVER.html"
+                }
+            }
+            if (score >= 50) {
+                setTimeout(timer5,2000)
+                if(obtained.y < h/3) {
+
+                }
+                else {
+                    obtained.y -= obtained.height/10
+
+                }
+            }
+            obtained.show()
+        }
+	    
+        
+        function mousePressed(){
+	        let mouseVector = getMouseVector();
+	        oneBullet = new bullet(mouseVector.x, mouseVector.y);
+            bullets.push(oneBullet);
+            bowsound.play()
+
+        }
+        
+        
+    </script>
+</body>
+</html>

@@ -5,6 +5,7 @@
     <script src="Objects.js"></script>
     <link rel="stylesheet" href="style.css">
     <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
     
 </head>
 <body>
@@ -51,6 +52,7 @@
         let fires = [fire1,fire2,fire3,fire4,fire5,fire6,fire7,fire8,fire9,fire10,fire11,fire12]
         let houses = [f1,f12,f2,f22,f13,f14,f23,f15,f16]
         let bow = new runnerbow(fire11.x+f12.width*7,h-player.height-player.height*1.2)
+        let music
         function preload() {
             right = loadImage('right.png')
             mapimg = loadImage('runner background.jpg')
@@ -60,10 +62,11 @@
             bigdemonimg = loadImage('bigdemon.png')
             tutorialimg = loadImage('spacetojump.png')
             bowimg = loadImage('bow.png')
+            music = loadSound('DreamMusic.wav')
         }
         function setup() {
             createCanvas(w,h)
-
+            music.play()
         }
         function draw() {
             clear()

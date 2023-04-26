@@ -5,6 +5,7 @@
     <script src="Objects.js"></script>
     <link rel="stylesheet" href="style.css">
     <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
     
 </head>
 <body>
@@ -28,9 +29,10 @@
             idle = loadImage('idle.png')
             left = loadImage('left.png')
             right = loadImage('right.png')
-            mapimg = loadImage('shooter background.jpg')
+            mapimg = loadImage('shooter2 background.jpg')
             demon = loadImage('demon.png')
             keyobtained = loadImage('keyobtained.png')
+            bowsound = loadSound('bow.wav')
         }
         function setup() {
             createCanvas(w,h)
@@ -48,12 +50,12 @@
                 bullets[i].detect()
                 }
             
-            //spawn enemy
+
             if (round(random(60)) == 1 && score < 50) {
                 enemy = new coloenemy()
                 enemies.push(enemy)
             }
-            //making enemies move
+
             for (var i = 0; i < enemies.length; i++) {
                 enemies[i].update(enemies[i].getDir().x,enemies[i].getDir().y,8)
                 enemies[i].show(demon)
@@ -81,7 +83,7 @@
 	        let mouseVector = getMouseVector();
 	        oneBullet = new bullet(mouseVector.x, mouseVector.y);
             bullets.push(oneBullet);
-
+            bowsound.play()
 
         }
         

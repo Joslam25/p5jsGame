@@ -50,6 +50,18 @@ function woopee() {
     else {
         towerbutton.y = parseInt(localStorage.getItem("towerbuttY"))
     }
+    if (localStorage.getItem("broadbuttX") === null) {
+        localStorage.setItem("broadbuttX",w*0.35*1.5*2.3)
+    }
+    else {
+        broadbutton.x = parseInt(localStorage.getItem("broadbuttX"))
+    }
+    if (localStorage.getItem("broadbuttY") === null) {
+        localStorage.setItem("broadbuttY",h*0.30*3.2)
+    }
+    else {
+        broadbutton.y = parseInt(localStorage.getItem("broadbuttY"))
+    }
     document.getElementById('keys').innerHTML = 'Keys: '+ localStorage.getItem("keycount")
 }
 function setpos() {
@@ -61,6 +73,8 @@ function setpos() {
     localStorage.setItem("colobuttY",colobutton.y)
     localStorage.setItem("towerbuttX",towerbutton.x)
     localStorage.setItem("towerbuttY",towerbutton.y)
+    localStorage.setItem("broadbuttX",broadbutton.x)
+    localStorage.setItem("broadbuttY",broadbutton.y)
 }
 function pplayer() {
     this.width = w*0.05
@@ -92,6 +106,7 @@ function pplayer() {
                 mmap.x -= 5
                 colobutton.x -= 5
                 towerbutton.x -= 5
+                broadbutton.x -= 5
             }
     }
     setpos()
@@ -114,6 +129,7 @@ function pplayer() {
                 mmap.x += 5
                 colobutton.x += 5
                 towerbutton.x += 5
+                broadbutton.x += 5
             }
         }
         setpos()
@@ -138,6 +154,7 @@ function pplayer() {
             mmap.y += 5
             colobutton.y += 5
             towerbutton.y += 5
+            broadbutton.y += 5
         }
 }  
 setpos()
@@ -159,6 +176,7 @@ setpos()
             mmap.y -= 5
             colobutton.y -= 5
             towerbutton.y -= 5
+            broadbutton.y -= 5
         }
 }
 setpos()
@@ -605,6 +623,38 @@ function towerbutton() {
 function timer4 () {
     localStorage.setItem("keycount",parseInt(localStorage.getItem("keycount"))+1)
     localStorage.setItem("shooter2",true)
+    location.href = 'Main.html'
+
+}
+function broadbutton() {
+    this.x = localStorage.getItem("broadbuttX")
+    this.y = localStorage.getItem("broadbuttY")
+    this.width = w/6
+    this.height = h/6
+    this.show = function() {
+        if (localStorage.getItem('shooter3') == 'true') {
+
+        }
+        else {
+        imageMode(CORNER)
+        image(butt,this.x,this.y,this.width,this.height)
+        }
+    }
+    this.redirect = function() {
+        if (localStorage.getItem('shooter3') == 'true') {
+
+        }
+        else {
+        location.href = "shooter3.html"
+        }
+    }
+}
+function playsound() {
+    bsound.loop()
+}
+function timer5 () {
+    localStorage.setItem("keycount",parseInt(localStorage.getItem("keycount"))+1)
+    localStorage.setItem("shooter3",true)
     location.href = 'Main.html'
 
 }
