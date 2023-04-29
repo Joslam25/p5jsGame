@@ -46,7 +46,7 @@
             smap.show(mapimg)
             player.moving()
             for (var i = 0; i < enemies.length; i++) {
-                enemies[i].update(enemies[i].getDir().x,enemies[i].getDir().y,9)
+                enemies[i].update(enemies[i].getDir().x,enemies[i].getDir().y,5)
                 enemies[i].show(demon)
                 //check player collision with enemy 
                 hit = collideRectRect(shooterx-(player.width)/2,shootery-(player.height)/2,player.width,player.height,enemies[i].x,enemies[i].y,enemies[i].width,enemies[i].width)

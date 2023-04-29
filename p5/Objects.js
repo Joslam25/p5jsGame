@@ -612,7 +612,7 @@ function obtained1() {
 function timer3 () {
     localStorage.setItem("keycount",parseInt(localStorage.getItem("keycount"))+1)
     localStorage.setItem("shooter1",true)
-    location.href = 'Main.html'
+    location.href = 'map.html'
 
 }
 function towerbutton() {
@@ -641,7 +641,7 @@ function towerbutton() {
 function timer4 () {
     localStorage.setItem("keycount",parseInt(localStorage.getItem("keycount"))+1)
     localStorage.setItem("shooter2",true)
-    location.href = 'Main.html'
+    location.href = 'map.html'
 
 }
 function broadbutton() {
@@ -673,7 +673,7 @@ function playsound() {
 function timer5 () {
     localStorage.setItem("keycount",parseInt(localStorage.getItem("keycount"))+1)
     localStorage.setItem("shooter3",true)
-    location.href = 'Main.html'
+    location.href = 'map.html'
 
 }
 function timer6 () {
@@ -874,5 +874,12 @@ function sound1() {
     danger.play()
 }
 function redirect() {
-    location.href = 'main.html'
+    location.href = 'map.html'
+}
+function finalscene() {
+    location.href = 'seventhscene.html'
+}
+function restart() {
+    localStorage.clear()
+    location.href = "START.html"
 }

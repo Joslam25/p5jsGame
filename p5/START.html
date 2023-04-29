@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
+</head>
+<body onload="setTimeout(timer1,20000)">
+    <div id="black"></div>
+    <img src="idle.png" id="mc">
+    <img src="interior.jpg" id="background1">
+    <img src="text1.png" id="text1">
+    <img src="text2.png" id="text2">
+    <script>
+        let bsound
+        function preload() {
+            window.alert('please make sure sound is enabled in your browser settings!')
+            outputVolume(0.2)
+            bsound = loadSound('bsound.wav')
+        }
+        function setup() {
+            bsound.loop()
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="p5.sound.js"></script>
+</head>
+<body>
+    <h1 id="keys">Keys: </h1>
+    <div id="black2"></div>
+    <script>
+        let w = window.innerWidth
+        let h = window.innerHeight
+        //creates the player
+        var player = new pplayer()
+        let mapimg
+        let idle
+        let left
+        let right
+        let butt
+        var colobutton = new colobutton()
+        var towerbutton = new towerbutton()
+        var broadbutton = new broadbutton()
+        var highbutton = new highbutton()
+        let buttarr = [colobutton,towerbutton,broadbutton,highbutton]
+        var hit = false
+
+
+        //creates the map
+        var mmap = new mmap()
+        function preload() {
+            //loads map image
+            mapimg = loadImage('map.jpg')
+            idle = loadImage('idle.png')
+            left = loadImage('left.png')
+            right = loadImage('right.png')
+            butt = loadImage('spacebutt.png')
+            outputVolume(0.2)
+            bsound = loadSound('bsound.wav')
+
+        }
+        function setup() {
+            createCanvas(w,h)
+            bsound.loop()
+        }
+        function draw() {
+            clear()
+            //loads localstorage data
+            woopee()
+            
+            //displays the map
+            mmap.show(mapimg)
+            //checks for player movement
+            player.moving()
+            for (let i = 0; i < buttarr.length; i++) {
+                hit = collideRectRect(buttarr[i].x,buttarr[i].y,buttarr[i].width,buttarr[i].height,player.x-player.width/2,player.y-player.height/2,player.width,player.height)
+                if (hit == true) {
+                    buttarr[i].show()
+                }
+                if (keyIsDown(32) && hit == true) {
+                    buttarr[i].redirect()
+             }
+            }
+        }
+        
+        
+    </script>
+</body>
+</html> 

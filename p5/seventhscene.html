@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
+</head>
+<body>
+    <div id="black2"></div>
+    <div id="black6"></div>
+    <img src="sunset.jpg" id="background1">
+    <img src="right.png" id="mc8">
+    <img src="father.png" id="father2">
+    <img src="mother.png" id="mother2">
+    <img src="text22.png" id="text22">
+    <img src="text23.png" id="text23">
+    <img src="end.png" id="end">
+    <script>
+        function preload() {
+            endsong = loadSound('endsong.wav')
+            
+        }
+        function setup() {
+            outputVolume(0.2)
+            endsong.play()
+        }
+    </script>
+</body>
+</html>

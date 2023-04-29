@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <script src="p5.js"></script>
     <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
 </head>
 <body onload="setTimeout(timer7,23000)">
     <div id="black2"></div>
@@ -16,5 +19,15 @@
 
     <img src="text16.png" id="text16" class="shake">
     <img src="text17.png" id="text17">
+    <script>
+        let danger
+        function preload() {
+            danger = loadSound('danger.wav')
+        }
+        function setup() {
+            outputVolume(0.2)
+            danger.loop()
+        }
+    </script>
 </body>
 </html>
