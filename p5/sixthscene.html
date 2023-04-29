@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
+</head>
+<body>
+    <div id="black2"></div>
+    <div id="black5"></div>
+    <img src="bossbattlebg.jpg" id="sixthbg">
+    <img src="bigdemon.png" id="boss2">
+    <img src="idle.png" id="mc7">
+    <img src="text18.png" id="text18">
+    <img src="text19.png" id="text19">
+    <img src="text20.png" id="text20">
+    <img src="text21.png" id="text21">
+    <script>
+        let bsound
+        function preload() {
+            outputVolume(0.2)
+            bsound = loadSound('bsound.wav')
+        }
+        function setup() {
+            bsound.loop()
+        }
+    </script>
+</body>
+</html>

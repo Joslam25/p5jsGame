@@ -62,6 +62,18 @@ function woopee() {
     else {
         broadbutton.y = parseInt(localStorage.getItem("broadbuttY"))
     }
+    if (localStorage.getItem("highbuttX") === null) {
+        localStorage.setItem("highbuttX",w*0.35*1.5*1.75)
+    }
+    else {
+        highbutton.x = parseInt(localStorage.getItem("highbuttX"))
+    }
+    if (localStorage.getItem("highbuttY") === null) {
+        localStorage.setItem("highbuttY",-h/10)
+    }
+    else {
+        highbutton.y = parseInt(localStorage.getItem("highbuttY"))
+    }
     document.getElementById('keys').innerHTML = 'Keys: '+ localStorage.getItem("keycount")
 }
 function setpos() {
@@ -75,6 +87,8 @@ function setpos() {
     localStorage.setItem("towerbuttY",towerbutton.y)
     localStorage.setItem("broadbuttX",broadbutton.x)
     localStorage.setItem("broadbuttY",broadbutton.y)
+    localStorage.setItem("highbuttX",highbutton.x)
+    localStorage.setItem("highbuttY",highbutton.y)
 }
 function pplayer() {
     this.width = w*0.05
@@ -107,6 +121,7 @@ function pplayer() {
                 colobutton.x -= 5
                 towerbutton.x -= 5
                 broadbutton.x -= 5
+                highbutton.x -= 5
             }
     }
     setpos()
@@ -130,6 +145,7 @@ function pplayer() {
                 colobutton.x += 5
                 towerbutton.x += 5
                 broadbutton.x += 5
+                highbutton.x += 5
             }
         }
         setpos()
@@ -155,6 +171,7 @@ function pplayer() {
             colobutton.y += 5
             towerbutton.y += 5
             broadbutton.y += 5
+            highbutton.y += 5
         }
 }  
 setpos()
@@ -177,6 +194,7 @@ setpos()
             colobutton.y -= 5
             towerbutton.y -= 5
             broadbutton.y -= 5
+            highbutton.y -= 5
         }
 }
 setpos()
@@ -657,4 +675,204 @@ function timer5 () {
     localStorage.setItem("shooter3",true)
     location.href = 'Main.html'
 
+}
+function timer6 () {
+    location.href = 'sixthscene.html'
+
+}
+function timer7 () {
+    location.href = 'bossbattle.html'
+
+}
+function bossdemon() {
+    this.width = player.width*4
+    this.height = player.height*2
+    this.x = w/2-this.width
+    this.y = 0-this.height
+    this.show = function() {
+        imageMode(CORNER)
+        image(bigdemonimg,this.x,this.y,this.width,this.height)
+    }
+    this.getDir = function() {
+        let dirx = shooterx-(player.width/2) - this.x;
+	    let diry = shootery-(player.height/2) - this.y;
+
+	    let Direction = createVector(dirx, diry);
+
+	    Direction.normalize();
+	    return Direction;
+    }
+    this.update = function(xSpd,ySpd) {
+        this.x += xSpd*3;
+		this.y += ySpd*3;
+
+
+    }
+}
+function bossp() {
+    this.width = w*0.05
+    this.height = h*0.15
+    this.show = function(img) {
+        imageMode(CORNER)
+        image(img,shooterx-(player.width)/2,shootery-(player.height)/2,this.width,this.height) 
+    }
+    this.moving = function() {
+        if (keyIsDown(68)) {
+            player.show(right)
+            
+            if (shooterx < w/2) {
+                
+                shooterx += 5
+            }
+            else {
+                if (((smap.x)+w*1.5) < w+30) {
+                    
+                    if ((shooterx) + 50 > w ) {
+                        console.log("4")
+                    }
+                    else {
+                        
+                        shooterx += 5
+                        
+                    }
+                }
+                else {
+                    
+                    smap.x -= 5
+
+                    for (var i = 0; i < bullets.length; i++){
+                        bullets[i].x -= 5;
+
+                    }
+                    for (var i = 0; i < enemies.length; i++) {
+                        enemies[i].x -= 5
+
+                    }
+                    boss.x -= 5
+                }
+        }
+
+        }
+        else if (keyIsDown(65)) {
+            player.show(left)
+            if (shooterx > w/2) {
+                shooterx -= 5
+            }
+            else {
+                if (((smap.x)-w*1.5) > -25) {
+                    if ((shooterx) - 50 < 0 ) {
+    
+                    }
+                    else {
+                        shooterx -= 5
+                    }
+                }
+                else {
+                    smap.x += 5
+
+                    for (var i = 0; i < bullets.length; i++){
+                        bullets[i].x += 5;
+
+                    }
+                    for (var i = 0; i < enemies.length; i++) {
+                        enemies[i].x += 5
+
+                    }
+                    boss.x += 5
+                }
+            }
+
+        }
+        else {
+            player.show(idle)
+        }
+        if (keyIsDown(87)) {
+            if (shootery > h/2) {
+                shootery -= 5
+            }
+            else {
+            if (((smap.y)-h*1.5) > -25) {
+                if ((shootery) - 50 < 0 ) {
+    
+                }
+                else {
+                    shootery -= 5
+                }
+            }
+            else {
+                smap.y += 5
+             
+                for (var i = 0; i < bullets.length; i++){
+                    bullets[i].y += 5;
+
+                }
+                for (var i = 0; i < enemies.length; i++) {
+                    enemies[i].y += 5
+
+                }
+                boss.y += 5
+            }
+    }  
+
+    }
+        else if (keyIsDown(83)) {
+        if (shootery < h/2) {
+            shootery += 5
+        }
+        else {
+            if (((smap.y)+h*1.5) < h+30) {
+                if ((shootery) + 50 > h ) {
+    
+                }
+                else {
+                    shootery += 5
+                }
+            }
+            else {
+                smap.y -= 5
+           
+                for (var i = 0; i < bullets.length; i++){
+                    bullets[i].y -= 5;
+
+                }
+                for (var i = 0; i < enemies.length; i++) {
+                    enemies[i].y -= 5
+
+                }
+                boss.y -= 5
+            }
+    }
+
+    }
+        }
+}
+function timer8 () {
+    location.href = 'sixthscene.html'
+
+}
+function highbutton() {
+    this.x = localStorage.getItem("highbuttX")
+    this.y = localStorage.getItem("highbuttY")
+    this.width = w/6
+    this.height = h/6
+    this.show = function() {
+        imageMode(CORNER)
+        image(butt,this.x,this.y,this.width,this.height)
+        
+    }
+    this.redirect = function() {
+        if (localStorage.getItem('keys') == '3') {
+            location.href = "fifthscene.html"
+        }
+        else {
+            window.alert('you dont have 3 keys')
+        }
+    }
+}
+function sound1() {
+    bsound.pause()
+    danger.play()
+}
+function redirect() {
+    location.href = 'main.html'
 }

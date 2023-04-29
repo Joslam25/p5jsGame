@@ -5,7 +5,7 @@
     <script src="Objects.js"></script>
     <script defer src="https://unpkg.com/p5.collide2d"></script>
     <link rel="stylesheet" href="style.css">
-    
+    <script src="p5.sound.js"></script>
 </head>
 <body>
     <h1 id="keys">Keys: </h1>
@@ -23,7 +23,8 @@
         var colobutton = new colobutton()
         var towerbutton = new towerbutton()
         var broadbutton = new broadbutton()
-        let buttarr = [colobutton,towerbutton,broadbutton]
+        var highbutton = new highbutton()
+        let buttarr = [colobutton,towerbutton,broadbutton,highbutton]
         var hit = false
 
 
@@ -36,11 +37,13 @@
             left = loadImage('left.png')
             right = loadImage('right.png')
             butt = loadImage('spacebutt.png')
+            outputVolume(0.2)
+            bsound = loadSound('bsound.wav')
 
         }
         function setup() {
             createCanvas(w,h)
-
+            bsound.loop()
         }
         function draw() {
             clear()

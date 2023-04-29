@@ -829,3 +829,206 @@ body {
     position: absolute;
     
 }
+#fifthbg {
+    width:300vw;
+    height:300vh;
+    z-index: 0;
+    position: absolute;
+    top: -5vh;
+}
+#mc6 {
+    z-index:2;
+    width: 6vw;
+    position: absolute;
+    top: 100vh;
+    left: 47vw;
+    animation-name: mc6;
+    animation-delay: 3s;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+#boss {
+    width:25vw;
+    position: absolute;
+    top:5vh;
+    left:37vw;
+}
+@keyframes mc6 {
+    100% {
+        transform: translate(0,-40vh);
+    }
+}
+#text11 {
+    width: 10vw;
+    position: absolute;
+    top:55vh;
+    left: 37vw;
+    animation-name: text11;
+    animation-duration: 3s;
+    animation-delay: 5s;
+    opacity: 0;
+}
+@keyframes text11 {
+    1% {
+        opacity: 1
+    }
+    100% {
+        opacity:1
+    }
+}
+#text12 {
+    width:10vw;
+    position: absolute;
+    top: 5vh;
+    left: 37vw;
+    animation-name: text12;
+    animation-duration: 2s;
+    animation-delay: 8s;
+    opacity: 0;
+}
+@keyframes text12 {
+    1% {
+        opacity: 1
+    }
+    100% {
+        opacity:1
+    }
+}
+#text13 {
+    width:10vw;
+    position: absolute;
+    top: 5vh;
+    left: 37vw;
+    animation-name: text12;
+    animation-duration: 3s;
+    animation-delay: 10s;
+    opacity: 0;
+}
+#text14 {
+    width:10vw;
+    position: absolute;
+    top: 5vh;
+    left: 37vw;
+    animation-name: text12;
+    animation-duration: 3s;
+    animation-delay: 13s;
+    opacity: 0;
+}
+
+#text16 {
+    width:15vw;
+    position: absolute;
+    top: 0vh;
+    left: 32vw;
+    animation-name: text12;
+    animation-duration: 3s;
+    animation-delay: 17s;
+    opacity: 0;
+}
+.shake {
+    animation-name: shake;
+    animation-duration: 0.25s;
+    animation-delay: 17s;
+    animation-timing-function: linear;
+}
+@keyframes shake {
+    33% {
+        transform: translate(0,2vh);
+    }
+    66% {
+        transform: translate(0,-2vh);
+    }
+    100% {
+        transform: translate(0,0);
+    }
+}
+#text17 {
+    width: 10vw;
+    position: absolute;
+    top:55vh;
+    left: 37vw;
+    animation-name: text11;
+    animation-duration: 3s;
+    animation-delay: 20s;
+    opacity: 0;
+}
+#score2 {
+    position: absolute;
+    color: red;
+    background-color: black;
+}
+#sixthbg {
+    width:300vw;
+    height:300vh;
+    z-index: 0;
+    position: absolute;
+    top: -5vh;
+}
+#boss2 {
+    width:25vw;
+    position: absolute;
+    top:5vh;
+    left:37vw;
+}
+#mc7 {
+    z-index:2;
+    width: 6vw;
+    position: absolute;
+    top: 60vh;
+    left: 47vw;
+}
+#text18 {
+    width:10vw;
+    position: absolute;
+    top: 5vh;
+    left: 37vw;
+    animation-name: text12;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    opacity: 0;
+}
+#text19 {
+    width:10vw;
+    position: absolute;
+    top: 5vh;
+    left: 37vw;
+    animation-name: text12;
+    animation-duration: 3s;
+    animation-delay: 6s;
+    opacity: 0;
+}
+#text20 {
+    width: 10vw;
+    position: absolute;
+    top:55vh;
+    left: 37vw;
+    animation-name: text12;
+    animation-duration: 3s;
+    animation-delay: 9s;
+    opacity: 0;
+}
+#text21 {
+    width:10vw;
+    position: absolute;
+    top: 5vh;
+    left: 37vw;
+    animation-name: text12;
+    animation-duration: 3s;
+    animation-delay: 12s;
+    opacity: 0;
+}
+#black5 {
+    width:100vw;
+    height: 100vh;
+    position:absolute;
+    top:0vh;
+    left:0vw;
+    animation-name: fade-in4;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    background-color: black;
+    animation-delay: 15s;
+    z-index: 4;
+    opacity: 0;
+}

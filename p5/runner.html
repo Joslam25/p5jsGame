@@ -66,6 +66,7 @@
         }
         function setup() {
             createCanvas(w,h)
+            outputVolume(0.2)
             music.play()
         }
         function draw() {
@@ -95,13 +96,13 @@
                 fires[i].show()
                 hit = collideRectRect(player.x,player.y,player.width,player.height,fires[i].x,fires[i].y,fires[i].width,fires[i].height)
                 if(hit) {
-                    //location.href = 'GAMEOVER.html'
+                    location.href = 'GAMEOVER.html'
                 }
             }
             demon.show()
             hit = collideRectRect(demon.x,demon.y,demon.width,demon.height,player.x,player.y,player.width,player.height)
             if (hit) {
-                //location.href = 'GAMEOVER.html'
+                location.href = 'GAMEOVER.html'
             }
             bow.show()
             if (map.x+map.width <= w) {
@@ -112,7 +113,6 @@
             if (key == ' ' && jump == true) {
                 player.jump()
                 jump = false
-
             }
         }
 	    

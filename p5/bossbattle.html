@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="p5.js"></script>
+    <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
+    
+</head>
+<body>
+    <h1 id="score1">Demons Killed: 0</h1>
+    <h1 id="score2">BOSS HP: 100%</h1>
+    <script>
+        var bullets = []
+        let w = window.innerWidth
+        let h = window.innerHeight
+        var shooterx = w/2
+        var shootery = h/2
+        var player = new bossp()
+        var smap = new smap()
+        let mapimg
+        let demon
+        var enemies = []
+        var hit = false
+        var health = 100
+        let keyobtained
+        let boss = new bossdemon()
+        let bigdemonimg
+        var score
+        function preload() {
+            idle = loadImage('idle.png')
+            left = loadImage('left.png')
+            right = loadImage('right.png')
+            mapimg = loadImage('bossbattlebg.jpg')
+            demon = loadImage('demon.png')
+            keyobtained = loadImage('keyobtained.png')
+            bowsound = loadSound('bow.wav')
+            bigdemonimg = loadImage('bigdemon.png')
+            danger = loadSound('danger.wav')
+        }
+        function setup() {
+            createCanvas(w,h)
+            outputVolume(0.2)
+            danger.loop()
+        }
+        function draw() {
+            document.getElementById('score1').innerHTML = " "
+            document.getElementById('score2').innerHTML = "BOSS HP: "+health+"%"
+            clear()
+            smap.show(mapimg)
+            player.moving()
+            for (var i = 0; i < enemies.length; i++) {
+                enemies[i].update(enemies[i].getDir().x,enemies[i].getDir().y,6)
+                enemies[i].show(demon)
+                //check player collision with enemy 
+                hit = collideRectRect(shooterx-player.width/2,shootery-player.height/2,player.width,player.height,enemies[i].x,enemies[i].y,enemies[i].width,enemies[i].width)
+                if (hit == true) {
+                    location.href = "GAMEOVER.html"
+                }
+            }
+            //making bullets move
+            for (var i = 0; i < bullets.length; i++){
+		        bullets[i].show()
+		        bullets[i].update()
+                //checking for bullet collision with enemy
+                bullets[i].detect()
+                hit = collideRectCircle(boss.x,boss.y,boss.width,boss.height,bullets[i].x,bullets[i].y,bullets[i].r) 
+
+                if (hit) {
+                    bullets.splice(i,1)
+                    health -= 1
+                }
+                else if (bullets[i].x > w) {
+                    bullets.splice(i,1)
+                }
+                else if (bullets[i].x < 0) {
+                    bullets.splice(i,1)
+                }
+                else if (bullets[i].y < 0) {
+                    bullets.splice(i,1)
+                }
+                else if (bullets[i].y > h) {
+                    bullets.splice(i,1)
+                }
+                }
+            
+
+            if (round(random(60)) == 1) {
+                enemy = new coloenemy()
+                enemies.push(enemy)
+            }
+
+            if (health == 0) {
+                timer8()
+
+            }
+            boss.update(boss.getDir().x,boss.getDir().y)
+            boss.show()
+
+            hit = collideRectRect(shooterx-player.width/2,shootery-player.height/2,player.width,player.height,boss.x,boss.y,boss.width,boss.height)
+            if (hit) {
+                location.href = 'GAMEOVER.html'
+           }
+        }
+	    
+        
+        function mousePressed(){
+            if (bullets.length < 5) { 
+	        let mouseVector = getMouseVector();
+	        oneBullet = new bullet(mouseVector.x, mouseVector.y);
+            bullets.push(oneBullet);
+            bowsound.play()
+            }
+
+        }
+        
+        
+    </script>
+</body>
+</html>

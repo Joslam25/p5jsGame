@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <script src="p5.js"></script>
     <script src="Objects.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="https://unpkg.com/p5.collide2d"></script>
+    <script src="p5.sound.js"></script>
 </head>
-<body>
+<body onload="setTimeout(redirect,65000)">
     <div id="black2"></div>
     <img src="map.jpg" id="map">
     <img src="idle.png" id="mc5">
@@ -18,10 +21,20 @@
     <img src="map.jpg" id="map2">
     <div class="typed" id="type5">The final key is at Broadmere, where even more demons await you.</div>
     <img src="X.png" id="X3">
-    <div class="typed" id="type6">Once you have collected all three keys, head over to High Paff Keep, where the Demon Lord's castle is.</div>
+    <div class="typed" id="type6">Once you have collected all three keys, head over to High Pass Keep, where the Demon Lord's castle is.</div>
     <img src="map.jpg" id="map3">
     <img src="X.png" id="X4">
     <div id="black5"></div>
+    <script>
+        let bsound
+        function preload() {
+            outputVolume(0.2)
+            bsound = loadSound('bsound.wav')
+        }
+        function setup() {
+            bsound.loop()
+        }
+    </script>
 </body>
 
 </html>
